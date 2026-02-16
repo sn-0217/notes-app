@@ -34,3 +34,4 @@ build/
 target
 db
 .mvn
+application.properties
