@@ -7,4 +7,5 @@ import com.notes_taker.app.entity.Note;
 
 public interface NoteRepository extends JpaRepository<Note, Long>{
     Optional<Note> findByTitle(String noteRequest);
+    void deleteByTitle(String title);
 }

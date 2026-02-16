@@ -40,4 +40,16 @@ public class GlobalExceptionHandler {
                 .build();
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(NotesAlreadyArchivedException.class)
+    public ResponseEntity<ErrorResponse> handleNotesAlreadyArchivedException(NotesAlreadyArchivedException exception, HttpServletRequest request){
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .timestamp(now())
+                .status(HttpStatus.CONFLICT.value())
+                .error(HttpStatus.CONFLICT.getReasonPhrase())
+                .message(exception.getMessage())
+                .path(request.getRequestURI())
+                .build();
+        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+    }
 }
