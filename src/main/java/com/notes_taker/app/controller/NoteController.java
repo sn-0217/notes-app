@@ -46,7 +46,7 @@ public class NoteController {
         return noteResponse == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(noteResponse);
     }
 
-    @PatchMapping("/{title}")
+    @PatchMapping("/{title}/archive")
     public ResponseEntity<String> archiveNotes(@PathVariable String title){
         noteService.archiveNotes(title);
         return ResponseEntity.ok(title + " archived");
